@@ -63,7 +63,7 @@ export const Row = styled(FlexWrap)`
 `
 
 interface Activable {
-  active: boolean
+  active?: boolean
 }
 
 interface Editable {
@@ -80,11 +80,11 @@ interface TextMediumType {
 interface TextInputTitleType extends TextMediumType, Editable {}
 
 interface buttonTitleType extends TextMediumType, Activable {
-  fontSize: number
+  fontSize?: number
 }
 
 interface ButtonType extends Activable {
-  outline: boolean
+  outline?: boolean
 }
 
 interface TextInputType extends Editable {
@@ -133,13 +133,11 @@ export const ButtonTitle = styled(TextSmall)<buttonTitleType>`
   font-size: ${({ fontSize = 16 }) => fontSize}px
 `
 
-export const Button = styled.TouchableOpacity`
-  border: ${({ outline }: ButtonType) =>
-    outline ? `1px solid ${dark_grey}` : 'none'}
+export const Button = styled.TouchableOpacity<ButtonType>`
+  border: ${({ outline }) => (outline ? `1px solid ${dark_grey}` : 'none')}
   padding: 2px 10px
   border-radius: 7px
-  background: ${({ active }: ButtonType) =>
-    active ? primary_color : 'transparent'}
+  background: ${({ active }) => (active ? primary_color : 'transparent')}
 `
 
 export const Inner = styled.View`

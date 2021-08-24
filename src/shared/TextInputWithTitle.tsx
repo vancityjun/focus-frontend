@@ -43,7 +43,7 @@ const TextInputWithTitle = ({
     <Inner width={width}>
       <TextInputTitle focus={focus}>{title}</TextInputTitle>
       <Content
-        as="TextInput"
+        as={TextInput}
         onChangeText={(value: string) => onChangeText(value)}
         value={value}
         maxLength={maxLength}

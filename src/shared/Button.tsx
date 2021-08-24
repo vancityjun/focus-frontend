@@ -4,19 +4,19 @@ import { globalVariables, ButtonTitle } from '../modules/style'
 
 interface TouchableType {
   onPress: () => void
-  outline: boolean
-  active: boolean
-  disabled: boolean
-  width: string
-  height: string
-  background: boolean
-  onBlur: () => void
+  outline?: boolean
+  active?: boolean
+  disabled?: boolean
+  width?: string | number
+  height?: string | number
+  background?: boolean
+  onBlur?: () => void
 }
 
 interface ButtonType extends TouchableType {
   title: string
-  fontSize: number
-  warn: boolean
+  fontSize?: number
+  warn?: boolean
 }
 
 const Button = ({
