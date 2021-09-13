@@ -44,7 +44,7 @@ export const FlexWrap = styled.View`
   display: flex
   flex-flow: row-wrap
   align-items: baseline
-  justify-content: ${({ justifyContent }: { justifyContent: string }) =>
+  justify-content: ${({ justifyContent }: { justifyContent?: string }) =>
     justifyContent || 'flex-start'}
 `
 

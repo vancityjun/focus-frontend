@@ -1,0 +1,6 @@
+query LocationData($country: String, $region: String) {
+  locationData(country: $country, region: $region) {
+    label
+    value
+  }
+}

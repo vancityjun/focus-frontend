@@ -1,0 +1,13 @@
+fragment UserFields on User {
+  id
+  userAttributes {
+    email
+    firstName
+    lastName
+    gender
+    country
+    region
+    city
+  }
+  fullName
+}
