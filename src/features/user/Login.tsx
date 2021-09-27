@@ -76,7 +76,7 @@ const Login = ({ navigation }: Props) => {
         title="Email"
         onChangeText={(value) => SetEmail(value)}
         value={email}
-        autoCompleteType="username"
+        autoCompleteType="email"
         autoFocus
         keyboardType="email-address"
         textContentType="emailAddress"

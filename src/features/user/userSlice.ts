@@ -16,12 +16,12 @@ interface userType {
   }
 }
 
-const userState: userType | {} = {}
+const userState: userType | null = null
 
 export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
   const response = await apolloClient.query({
     query: CurrentUser,
-    fetchPolicy: 'network-only',
+    fetchPolicy: 'no-cache',
   })
   return response.data.currentUser
 })
@@ -31,9 +31,9 @@ export const updateUser = createAsyncThunk(
   async (variables) => {
     const response = await apolloClient.mutate({
       mutation: UpdateUser,
-      variables: variables,
+      variables: { input: variables },
     })
-    return response.data.user
+    return response.data.updateUser.user
   }
 )
 
@@ -47,7 +47,7 @@ const userSlice = createSlice({
         return payload
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
-        return { ...state, ...payload }
+        return payload
       })
   },
 })

@@ -1,7 +1,7 @@
 fragment UserFields on User {
   id
+  email
   userAttributes {
-    email
     firstName
     lastName
     gender

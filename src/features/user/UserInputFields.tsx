@@ -34,9 +34,9 @@ const UserInputFields = ({
 
   useEffect(() => {
     if (!loading && locationData) {
-      if (!state.country) {
+      if (!state.country || !countries.length) {
         setCountries(locationData)
-      } else if (!state.region) {
+      } else if (!state.region || !regions.length) {
         setRegions(locationData)
       } else {
         setCities(locationData)
@@ -51,13 +51,19 @@ const UserInputFields = ({
   }
 
   useEffect(() => {
-    resetLocation()
-    refetch({ country: state.country, region: '' })
+    if (countries.length) {
+      resetLocation()
+      refetch({ country: state.country, region: '' })
+    }
   }, [state.country])
 
   useEffect(() => {
-    refetch({ country: state.country, region: state.region })
-  }, [state.region])
+    countries.length && refetch({ country: state.country, region: '' })
+  }, [countries])
+
+  useEffect(() => {
+    regions.length && refetch({ country: state.country, region: state.region })
+  }, [state.region, regions])
 
   return (
     <>

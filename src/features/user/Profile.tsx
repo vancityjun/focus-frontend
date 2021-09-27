@@ -20,6 +20,7 @@ const Profile = ({ navigation }: Props) => {
   const menu = [
     { title: 'Logout', action: () => logout() },
     { title: 'Edit Profile', action: () => navigation.navigate('UpdateUser') },
+    { title: 'Change Password', action: () => {} },
   ]
 
   return (
@@ -28,7 +29,7 @@ const Profile = ({ navigation }: Props) => {
         <TextSmall>{currentUser?.fullName}</TextSmall>
       </FlexWrap>
       <FlexWrap>
-        <TextSmall>{currentUser?.userAttributes.email}</TextSmall>
+        <TextSmall>{currentUser?.email}</TextSmall>
       </FlexWrap>
       {menu.map(({ title, action }) => (
         <Row

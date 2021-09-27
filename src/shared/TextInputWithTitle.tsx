@@ -41,7 +41,7 @@ const TextInputWithTitle = ({
 
   return (
     <Inner width={width}>
-      <TextInputTitle focus={focus}>{title}</TextInputTitle>
+      <TextInputTitle focus={editable && focus}>{title}</TextInputTitle>
       <Content
         as={TextInput}
         onChangeText={(value: string) => onChangeText(value)}
