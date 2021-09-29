@@ -32,9 +32,6 @@ const Button = ({
   background = true,
   onBlur = () => {},
 }: ButtonType) => {
-  if (!title) {
-    console.error('title is required!')
-  }
   return (
     <Touchable
       onPress={() => onPress()}
