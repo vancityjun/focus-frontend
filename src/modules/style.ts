@@ -143,6 +143,7 @@ export const Inner = styled.View`
   width: ${({ width }: { width: any }) => width || '100%'}
   margin-bottom: 20px
 `
+
 export const ModalStyle = styled.View`
   shadow-opacity: 0.24
   shadow-radius: 7px
