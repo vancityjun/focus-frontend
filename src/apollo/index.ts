@@ -6,8 +6,6 @@ import {
 } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import SignupMutation from '../graphql/mutations/signup.gql'
-import LoginMutation from '../graphql/mutations/login.gql'
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:3000/graphql',
