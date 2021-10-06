@@ -1,4 +1,9 @@
-import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
+import {
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+  ApolloLink,
+} from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
@@ -16,6 +21,10 @@ const getToken = async () => {
   return `Bearer ${token}`
 }
 
+export const setToken = async (token: string) => {
+  await AsyncStorage.setItem('@token', `token=${token}`)
+}
+
 const authLink = setContext(async (_, { headers }) => {
   const token = await getToken()
   return {
@@ -27,7 +36,10 @@ const authLink = setContext(async (_, { headers }) => {
 })
 
 const apolloClient = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
+  link: ApolloLink.from([authLink, httpLink]),
+  cache: new InMemoryCache({
+    addTypename: false,
+  }),
 })
+
 export default apolloClient

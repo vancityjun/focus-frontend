@@ -37,11 +37,11 @@ const TextInputWithTitle = ({
   keyboardType = 'default',
   textContentType = 'none',
 }: TextInputWithTitleType) => {
-  const [focus, setFocus] = useState(false)
+  const [focus, toggleFocus] = useState(false)
 
   return (
     <Inner width={width}>
-      <TextInputTitle focus={focus}>{title}</TextInputTitle>
+      <TextInputTitle focus={editable && focus}>{title}</TextInputTitle>
       <Content
         as={TextInput}
         onChangeText={(value: string) => onChangeText(value)}
@@ -49,8 +49,8 @@ const TextInputWithTitle = ({
         maxLength={maxLength}
         secureTextEntry={secureTextEntry}
         focus={focus}
-        onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
+        onFocus={() => toggleFocus(true)}
+        onBlur={() => toggleFocus(false)}
         multiline={multiline}
         autoFocus={autoFocus}
         isDesktop={isDesktop}
